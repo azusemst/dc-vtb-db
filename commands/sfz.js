@@ -19,7 +19,7 @@ module.exports = {
             await interaction.reply(':x: 请输入有效的身份证号！');
             return;
         }
-
+        await interaction.deferReply();
         if (name.length > 1) {
             fetch(`https://zj.v.api.aa1.cn/api/eys/?name=${name}&card=${id}`)
                 .then((response) => response.json())
@@ -33,7 +33,7 @@ module.exports = {
                             res2 = ':white_check_mark: 身份证校验正确\n\n```' + JSON.stringify(data.data) + '```';
                         else
                             res2 = ':x: 身份证校验错误';
-                        interaction.reply(res1 + res2);
+                        interaction.editReply(res1 + res2);
                     });
                 });
         }
@@ -44,7 +44,7 @@ module.exports = {
                     res2 += ':white_check_mark: 身份证校验正确\n\n```' + JSON.stringify(data.data) + '```';
                 else
                     res2 += ':x: 身份证校验错误';
-                interaction.reply(res2);
+                interaction.editReply(res2);
             });
         }
         async function idCheck() {
