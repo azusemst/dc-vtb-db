@@ -1,5 +1,5 @@
 const { REST, Routes } = require('discord.js');
-const { token } = process.env;
+// const { token } = process.env;
 const fs = require('node:fs');
 
 const clientId = '1033949990709629008';
@@ -11,7 +11,7 @@ for (const file of commandFiles) {
     commands.push(command.data.toJSON());
 }
 
-const rest = new REST({ version: '10' }).setToken(token);
+const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
 
 // deploy
 module.exports = (client) => {
